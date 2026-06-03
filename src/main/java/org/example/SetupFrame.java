@@ -173,4 +173,6 @@ public class SetupFrame extends JFrame {
         });
     }
 
+//    נצמנחמצגניצמכ חתצמכחצנמכגמצת
+
 }
