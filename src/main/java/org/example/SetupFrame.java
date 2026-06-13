@@ -51,6 +51,7 @@ public class SetupFrame extends JFrame {
         setSize(350, 560); // הגבהתי מעט (מ-520 ל-560) רק כדי לפנות מקום לכפתור החדש
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         // שימוש ב-BoxLayout אנכי ישירות על החלון, בדיוק כמו שהיה לך לפני השינויים
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
@@ -168,6 +169,8 @@ public class SetupFrame extends JFrame {
                     HttpResponse<java.io.InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
 
                     if (response.statusCode() == 200) {
+//                        pickcherW = loadedMazeImage.getWidth() / widthField;
+//                        pickcherH = loadedMazeImage.getHeight() / heightField;
                         java.awt.image.BufferedImage mazeImage = javax.imageio.ImageIO.read(response.body());
 
                         SwingUtilities.invokeLater(() -> {
@@ -208,7 +211,7 @@ public class SetupFrame extends JFrame {
             getMazeButton.setEnabled(false);
             showMazeButton.setEnabled(false);
 
-            MazeFrame mazeFrame = new MazeFrame(loadedMazeImage,newWallColor,newGridColor,drawGrid,newPathColor,animationDelayMs);
+            MazeFrame mazeFrame = new MazeFrame(loadedMazeImage,newWallColor,newGridColor,drawGrid,newPathColor,animationDelayMs,actualWidth,actualHeight);
             mazeFrame.setVisible(true);
 
             mazeFrame.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -279,4 +282,6 @@ public class SetupFrame extends JFrame {
             JOptionPane.showMessageDialog(SetupFrame.this, message, "שגיאת תקשורת", JOptionPane.ERROR_MESSAGE);
         });
     }
+
+//    public vol
 }
