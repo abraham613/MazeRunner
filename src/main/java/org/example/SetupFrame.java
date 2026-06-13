@@ -283,5 +283,4 @@ public class SetupFrame extends JFrame {
         });
     }
 
-//    public vol
 }
