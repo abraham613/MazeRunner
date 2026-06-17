@@ -47,11 +47,11 @@ public class SetupFrame extends JFrame {
 
     public SetupFrame() {
         // הגדרות בסיסיות של החלון - בדיוק כמו במקור שלך!
-        setTitle("חלון הגדרות");
-        setSize(350, 560); // הגבהתי מעט (מ-520 ל-560) רק כדי לפנות מקום לכפתור החדש
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setResizable(false);
+        this.setTitle("חלון הגדרות");
+        this.setSize(350, 560); // הגבהתי מעט (מ-520 ל-560) רק כדי לפנות מקום לכפתור החדש
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         // שימוש ב-BoxLayout אנכי ישירות על החלון, בדיוק כמו שהיה לך לפני השינויים
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
@@ -212,6 +212,7 @@ public class SetupFrame extends JFrame {
             showMazeButton.setEnabled(false);
 
             MazeFrame mazeFrame = new MazeFrame(loadedMazeImage,newWallColor,newGridColor,drawGrid,newPathColor,animationDelayMs,actualWidth,actualHeight);
+            mazeFrame.setResizable(false);
             mazeFrame.setVisible(true);
 
             mazeFrame.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -260,7 +261,6 @@ public class SetupFrame extends JFrame {
                     newWallColor = Color.decode(wallCellColor);
                     newPathColor = Color.decode(pathColor);
                     newGridColor = Color.decode(gridColor);
-
 
                     SwingUtilities.invokeLater(() -> {
                         wallColorLabel.setText("צבע קירות: " + wallCellColor);
